@@ -63,20 +63,40 @@
 			</dl>
 		</div>
 		<div id="lists">
+		
 			<c:forEach var = "dto" items="${lists }">
+			
 			<dl>
-				<dd class="num"> </dd>
-				<dd class="subject"> </dd>
-				<dd class="name"> </dd>
-				<dd class="created"> </dd>
-				<dd class="hitCount"> </dd>
+				<dd class="num"> ${dto.listNum }</dd>
+				<dd class="subject">
+				<c:if test="${dto.depth != 0 }">
+					<c:forEach var = "n" begin="1" end="${dto.depth }" step = "1" >
+						&nbsp;
+					</c:forEach>
+					<img alt="" src="<%=cp%>/board/image/re.gif">
+				</c:if>
+				
+				<a href = "${urlArticle }&boardNum=${dto.boardNum }">
+				${dto.subject }
+				</a>
+
+				</dd>
+				<dd class="name">${dto.name }</dd>
+				<dd class="created">${dto.created }</dd>
+				<dd class="hitCount">${dto.hitCount }</dd>
 			</dl>
+			
 			</c:forEach>
 		</div>
 		<div id="footer">
 			<p>
-				<a href="#">1</a>
-				<a href="#">2</a>
+				<c:if test="${totalDataCount != 0 }">
+					${pageIndexList }
+				</c:if>
+			
+				<c:if test="${totalDataCount == 0 }">
+					등록된 게시물이 없습니다.
+				</c:if>
 			</p>
 		</div>
 	</div>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="imageTest">
+	<select id="getMaxNum" resultClass="int">
+		select nvl(max(num),0) from imageTest 
+	</select>
+	
+	<insert id="insertData" parameterClass="com.imageTest.ImageTestDTO" >
+		insert into imageTest(num, subject, saveFileName) values(#num#,#subject#,#saveFileName#)
+	</insert>
+	
+	<select id="getReadData" parameterClass="int">
+		select num, subject, saveFileName from imageTest where num = #num#
+	</select>
+	
+	<select id="getList" parameterClass="map">
+<![CDATA[
+		select * from (
+		select rownum rnum, data.* from (
+		select num, subject, saveFileName from imageTest order by num desc) data)
+		where rnum >= #start# and rnum <= #end#
+]]>
+	</select>
+	
+	<delete id="deleteData" parameterClass="int">
+		delete imageTest where num = #num#
+	</delete>
+
+	<select id="getDataCount" resultClass="int">
+		select nvl(count(*),0) from imageTest
+	</select>
+
+
+</sqlMap>

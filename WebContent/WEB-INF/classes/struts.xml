@@ -11,5 +11,8 @@
 	
 	<include file="struts-test.xml"/>
 	<include file="struts-board.xml"/>
+	<include file="struts-fileTest.xml"/>
+	<include file="struts-imageTest.xml"/>
+	
 
 </struts>
