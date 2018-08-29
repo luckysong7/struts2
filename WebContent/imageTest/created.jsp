@@ -29,7 +29,7 @@
 			return;
 		}
 		
-		f.action = "<%=cp %>/image/write_ok.do";
+		f.action = "<%=cp %>/imageTest/created.action";
 		f.submit();
 		
 	}
@@ -41,7 +41,7 @@
 <center>	
 	<div id="bbsList_title">
 	<a href ="javascript:location.href='<%=cp%>/image/list.do';" style="font-size: 18pt">
-	이미지게시판 (Servlet)
+	이미지게시판 (Struts2)
 	</a>
 	</div>
 	
@@ -63,10 +63,12 @@
 		
 		<tr align="center" >
 			<td colspan="2">
+				
+				<input type="hidden" name ="mode" value="save" />
 				<input class = "btn2" type="button" value="등록하기" onclick="sendIt()"/>
 				<input class = "btn2" type="reset" value="다시입력" onclick ="document.myForm.subject.focus();" />
 				<input class = "btn2" type ="button" value ="작성취소" 
-				onclick ="javascript:location.href='<%=cp %>/image/list.do'"/>
+				onclick ="javascript:location.href='<%=cp %>/imageTest/list.action?pageNum=${pageNum }'"/>
 				
 			</td>
 		</tr>

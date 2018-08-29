@@ -68,18 +68,25 @@ public class ImageTestAction extends ActionSupport implements Preparable,
 		// 파일 저장할 경로
 		// 생략 가능 String root = pageContext.getServletContext().getRealPath("/");
 		String root = session.getServletContext().getRealPath("/");
-		String savePath = root + File.separator + "pds" + File.separator
-				+ "imageFile";
-
+		String savePath = root + File.separator + "pds" + File.separator + "imageFile";
+		System.out.println(root);
+		System.out.println(savePath);
 
 		// 파일 업로드 필요 코딩 끝--------------------------------------------
 
 		// 파일 업로드
 	
-		saveFileName = FileManager.doFileUpload(dto.getUpload(),
-				dto.getUploadFileName(), savePath);
-
+		saveFileName = FileManager.doFileUpload(dto.getUpload(),dto.getUploadFileName(), savePath);
+		System.out.println("저장이름"+saveFileName);
 		originalFileName = dto.getUploadFileName();
+		System.out.println("오리지날"+ originalFileName);
+		
+		int maxNum = dao.getIntValue("imageTest.getMaxNum");
+		dto.setNum(maxNum+1);
+		
+		dto.setSaveFileName(saveFileName);
+		dao.insertData("imageTest.insertData", dto);
+		
 
 		return SUCCESS;
 
@@ -129,8 +136,17 @@ public class ImageTestAction extends ActionSupport implements Preparable,
 		hMap.put("end", end);
 		List<Object> lists = (List<Object>) dao.getListData("imageTest.getList", hMap);
 		String urlList = cp + "/imageTest/list.action";
+		String root = session.getServletContext().getRealPath("/");
+		String savePath = root +"pds" + File.separator + "imageFile";
+		String deletePath = cp + "/imageTest/delete.action";
+		
 		request.setAttribute("lists", lists);
 		request.setAttribute("totalDataCount", totalDataCount);
+		request.setAttribute("totalPage", totalPage);
+		request.setAttribute("pageNum", currentPage);
+		request.setAttribute("savePath", savePath);
+		request.setAttribute("deletePath", deletePath);
+		
 		request.setAttribute("pageIndexList",myUtil.pageIndexList(currentPage, totalPage, urlList));
 	
 		return SUCCESS;

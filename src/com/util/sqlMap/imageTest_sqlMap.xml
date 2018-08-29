@@ -17,7 +17,7 @@
 		select num, subject, saveFileName from imageTest where num = #num#
 	</select>
 	
-	<select id="getList" parameterClass="map">
+	<select id="getList" parameterClass="map" resultClass="com.imageTest.ImageTestDTO">
 <![CDATA[
 		select * from (
 		select rownum rnum, data.* from (

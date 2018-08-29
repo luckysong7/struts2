@@ -20,14 +20,14 @@
 <body>
 	<div align="center" style="padding-top: 30px;">
 		<div id="bbsList_title" align="center">
-			<a href="javascript:location.href='<%=cp%>/image/list.action';"
-				style="font-size: 18pt"> 이미지 게시판 (Servlet) </a>
+			<a href="javascript:location.href='<%=cp%>/imageTest/list.action';"
+				style="font-size: 18pt"> 이미지 게시판 (Struts2) </a>
 		</div>
 	
 
 		<table border="0" width="550" align="center">
 			<tr>
-				<td>Total ${articleNum } articles , ${totalPageNum } pages / Now page is ${pageNum }</td>
+				<td>Total ${totalDataCount } articles , ${totalPage } pages / Now page is ${pageNum }</td>
 				<td align="right">	
 				<input type="button" value="게시물 등록"
 				onclick="javascript:location.href='<%=cp%>/imageTest/created.action';" />
@@ -43,7 +43,8 @@
 						<tr>
 					</c:if>
 						<td align="center">
-							<img src="${imagePath }/${dto.saveFileName }" width="180" height="180" /><br/> 
+							
+							<img alt="${savePath }/${dto.saveFileName }" src="${savePath }/${dto.saveFileName }" width="180" height="180" /><br/> 
 							${dto.subject } 
 							<a href="${deletePath }?num=${dto.num }&pageNum=${pageNum}" >삭제</a>
 						</td> 	
@@ -64,10 +65,10 @@
 
 		<div id="footer">
 			<p>
-				<c:if test="${dataCount!=0 }">
+				<c:if test="${totalDataCount != 0 }">
 					${pageIndexList }
 				</c:if>
-				<c:if test="${dataCount ==0 }">
+				<c:if test="${totalDataCount == 0 }">
 					등록된 게시물이 없습니다.
 				</c:if>
 			</p>
