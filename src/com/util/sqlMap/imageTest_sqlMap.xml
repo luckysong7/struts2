@@ -13,8 +13,8 @@
 		insert into imageTest(num, subject, saveFileName) values(#num#,#subject#,#saveFileName#)
 	</insert>
 	
-	<select id="getReadData" parameterClass="int">
-		select num, subject, saveFileName from imageTest where num = #num#
+	<select id="getReadData" parameterClass="int" resultClass="String">
+		select saveFileName from imageTest where num = #num#
 	</select>
 	
 	<select id="getList" parameterClass="map" resultClass="com.imageTest.ImageTestDTO">
@@ -33,6 +33,22 @@
 	<select id="getDataCount" resultClass="int">
 		select nvl(count(*),0) from imageTest
 	</select>
+	
+	<!-- 회원가입 로그인 처리 관련 SQL -->
 
+	<insert id="signupMember" parameterClass="com.imageTest.MemberDTO" >
+		insert into member(userId, userPwd, userName, userBirth, userTel) 
+		values(#userId#,#userPwd#,#userName#,#userBirth#,#userTel#)
+	</insert>
+	
+	<update id="updateMember" parameterClass="com.imageTest.MemberDTO">
+		update member set userPwd = #userPwd# , userTel = #userTel# , userBirth = #userBirth#
+		where userId = #userId#
+	</update>
 
+	<select id="getMember" parameterClass="String" resultClass="com.imageTest.MemberDTO">
+		select userId, userPwd, userName, userBirth, userTel from member where userId = #userId#
+	</select>
+	
+	
 </sqlMap>

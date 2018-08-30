@@ -7,6 +7,16 @@ public class MemberDTO {
 	private String userBirth;
 	private String userTel;
 
+	private String mode;
+
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
 	public String getUserId() {
 		return userId;
 	}

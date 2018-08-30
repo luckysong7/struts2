@@ -17,6 +17,16 @@ public class ImageTestDTO {
 	// 파일이름을 넣어준다.
 	// upload+FileName (자동으로 파일명 전달)
 	private String uploadFileName;
+	
+	private int pageNum;
+
+	public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
 
 	public File getUpload() {
 		return upload;

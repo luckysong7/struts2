@@ -1,0 +1,27 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="chain" extends="struts-default" namespace="/chainTest" >
+
+	<action name="created" method="created" class="com.chain.RegisterAction">
+		<result name="input">/chainTest/register.jsp</result>
+<!--    <result name="success">/chainTest/result.jsp</result> -->
+		<result name = "success" type ="chain">
+			<param name="actionName">login</param>
+<!-- 		패키지가 두개 이상일 경우 namespace로 연결해준다 -->
+			<param name="namespace">/chainTest</param>
+		</result>
+	</action>        
+
+	<action name="login" method="login" class="com.chain.LoginAction">
+		<interceptor-ref name="chain"/>
+<!-- 		순서 중요 객체생성이 먼저 나와야함 -->
+		<interceptor-ref name="prepare"/>
+		<interceptor-ref name="modelDriven"/>
+		<interceptor-ref name="params"/>
+		<result name= "input">/chainTest/login.jsp</result>
+		<result name= "success">/chainTest/result.jsp</result>
+	</action>
+</package>
+</struts>

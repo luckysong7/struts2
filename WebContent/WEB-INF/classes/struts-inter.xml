@@ -1,0 +1,30 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="inter" extends="struts-default" namespace="/interTest" >        
+
+	<!-- 인터셉터 객체 생성 -->
+
+	<interceptors>
+		<interceptor name= "myTimer" class="com.inter.TimerIntercepter"/>
+		
+	</interceptors>
+
+
+	<action name="write" >
+		<result>/inter/write.jsp</result>
+	</action>
+	
+	<action name="save" class="com.inter.TestAction">
+		<!-- 이미 내부적으로 사용하고 있는 인터셉터가 있는데 
+		사용자 정의 인터셉터를 사용하게 되면 
+		기존의 다른 인터셉터들은 사용중지됨
+		그러므로 수동으로 인터셉터를 작성해주어야함 -->
+		<interceptor-ref name="myTimer"/>
+		<interceptor-ref name="params" />
+		<result name ="success">/inter/view.jsp</result>
+	</action>
+
+</package>
+</struts>

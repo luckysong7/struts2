@@ -16,7 +16,28 @@
 	<action name="deleted" method="deleted" class ="com.imageTest.ImageTestAction">
 		<result name ="success" type="redirectAction">list?pageNum=${dto.pageNum }</result>
 	</action>
+	
+	<action name="signup" method="signup" class ="com.imageTest.LoginAction">
+		<result name ="input">/imageTest/signup.jsp</result>
+		<result name="success">/imageTest/list.jsp</result>
+	</action> 
 
-
+	<action name="login" method ="login" class ="com.imageTest.LoginAction">
+		<result name ="input">/imageTest/login.jsp</result>
+		<result name ="error" >/imageTest/login.jsp</result>
+		<result name ="success" type ="redirectAction">list</result>
+	</action>
+	
+	<action name="logout" method="logout" class = "com.imageTest.LoginAction">
+		<result name="error" type="redirectAction">list</result>
+		<result name ="success" type ="redirectAction">list</result>
+	</action>
+	
+	<action name="searchPwd" method="searchPwd" class ="com.imageTest.LoginAction">
+		<result name ="input">/imageTest/searchPwd.jsp</result>
+		<result name ="error">/imageTest/searchPwd.jsp</result>
+		<result name ="success">/imageTest/searchPwd.jsp</result>
+		<result name ="none">/imageTest/searchPwd.jsp</result>
+	</action>
 </package>
 </struts>

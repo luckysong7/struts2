@@ -5,13 +5,7 @@
 	String cp = request.getContextPath();
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>게 시 판(Struts2)</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-<link rel="stylesheet" href="<%=cp%>/board/css/style.css" type="text/css"/>
 <link rel="stylesheet" href="<%=cp%>/board/css/list.css" type="text/css"/>
 
 <script type="text/javascript">
@@ -25,10 +19,6 @@
 	
 </script>
 
-
-</head>
-
-<body>
 <div id="bbsList">
 	<div id="bbsList_title">
 	게 시 판(Struts2)
@@ -101,6 +91,3 @@
 		</div>
 	</div>
 </div>
-</body>
-
-</html>

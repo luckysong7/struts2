@@ -5,11 +5,23 @@
       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
-	<definition name="" template="">
-	  	<put-attribute name="" value="" />
+<!-- mainLayout 으로 호출 -->
+	<definition name="mainLayout" template="/layout/layout.jsp">
+	  	<put-attribute name="header" value="/layout/header.jsp" />
+	  	<put-attribute name="body" value="/main.jsp" />
+	  	<put-attribute name="footer" value="/layout/footer.jsp" />
+	  	
 	</definition>
 	
-	<definition name="" extends="" >
-	  	<put-attribute name="" value="" />
+	<definition name="board.listLayout" extends="mainLayout">
+		<put-attribute name="body" value="/board/list.jsp"/>
+	</definition>
+	
+	<definition name="board.createdLayout" extends="mainLayout">
+		<put-attribute name="body" value="/board/created.jsp"/>
+	</definition>
+	
+	<definition name="board.articleLayout" extends="mainLayout">
+		<put-attribute name="body" value="/board/article.jsp"/>
 	</definition>
 </tiles-definitions>
