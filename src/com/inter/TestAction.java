@@ -27,8 +27,7 @@ public class TestAction extends ActionSupport {
 	
 	public String execute() throws Exception {
 		
-		// ÀÛ¾÷ ÄÚµù
-		
+		// ì‹¤í–‰
 		
 		return SUCCESS;
 	}
